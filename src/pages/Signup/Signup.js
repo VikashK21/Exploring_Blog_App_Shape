@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../App.css';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import config from '../../config';
 
 const Signup = () => {
 
@@ -17,7 +18,7 @@ const Signup = () => {
     }
     delete user.confirm_pass;
     console.log(user, 'users');
-    fetch('/api/users/signup', {
+    fetch(config.base_URL + '/api/users/signup', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -26,10 +27,8 @@ const Signup = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('Success:', data, data[Object.keys(data)[0]]);
         if (typeof (data.result) == 'object') {
           setMessage('Successfully Signed Up.')
-          console.log('success');
           setTimeout(() => {
             navigate('/login');
           }, 3000)
@@ -84,7 +83,7 @@ const Signup = () => {
         <Row>
           <Form.Group>
             <Form.Label>Password*</Form.Label>
-            <Form.Control size='lg' type="password" placeholder='Strong Password...' required
+            <Form.Control size='lg' type="password" placeholder='Create a Strong Password...' required
               onChange={(e) => { setUser(pre => ({ ...pre, password: e.target.value })) }} />
           </Form.Group>
           <Form.Group>

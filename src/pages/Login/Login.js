@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../../App.css';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import config from '../../config';
 
 const Login = () => {
 
@@ -11,8 +12,7 @@ const Login = () => {
 
   function loginChec(e) {
     e.preventDefault()
-    console.log(user);
-    fetch('/api/users/login', {
+    fetch(config.base_URL + '/api/users/login', {
       mode: 'cors',
       method: 'POST', // or 'PUT'
       headers: {
@@ -66,7 +66,7 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control className='mb-2' size='lg' type="password" placeholder='Password@12' required
               onChange={(e) => { setUser((pre) => ({ ...pre, password: e.target.value })) }} />
-            <Form.Text>Forgot password? <Button variant='secondary'  onClick={() => navigate('/change_password')}>Change Password</Button></Form.Text>
+            <Form.Text>Forgot password? <Button variant='secondary' onClick={() => navigate('/change_password')}>Change Password</Button></Form.Text>
           </Form.Group>
           <Button size='lg' variant='success' type="submit">Log In</Button>
         </Form>

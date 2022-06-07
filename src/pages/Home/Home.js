@@ -9,15 +9,18 @@ import { Nav, Button, Container } from 'react-bootstrap';
 const Home = () => {
     const { blogs, error, Logout, allBlogs } = useContext(GlobalContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
+    function bringingAll() {
         if (!document.cookie) {
             navigate('/login')
         }
         else {
             allBlogs()
         }
-    }, [])
+    }
+
+    useEffect(() => {
+        bringingAll()
+    })
 
 
     return (

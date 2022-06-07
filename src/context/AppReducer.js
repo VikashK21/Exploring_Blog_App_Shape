@@ -12,7 +12,7 @@ const AppReducer = (state = initailState, action) => {
         case TYPES.FETCH_BLOG_REQUEST:
             return { ...state, loading: true }
         case TYPES.FETCH_BLOG_SUCCESS:
-            return { ...state, loading: false, blogs: action.payload }
+            return { ...state, loading: false, blogs: action.payload.blogs, id: action.payload.id }
         case TYPES.FETCH_BLOG_FAILURE:
             return { ...state, loading: false, error: action.payload }
         case TYPES.POSTED_BLOG:
