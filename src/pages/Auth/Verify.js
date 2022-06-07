@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
+import config from '../../config';
 
 const Verify = () => {
 
@@ -10,7 +11,7 @@ const Verify = () => {
 
     function verify_acc(e) {
         e.preventDefault();
-        fetch('/api/users/verify_acc', {
+        fetch(config.base_URL + '/api/users/verify_acc', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
