@@ -13,7 +13,6 @@ const Login = () => {
   function loginChec(e) {
     e.preventDefault()
     fetch(config.base_URL + '/api/users/login', {
-      mode: 'cors',
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
