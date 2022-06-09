@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../../App.css';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-// import config from '../../config';
+import config from '../../config';
 
 const Login = () => {
 
@@ -12,8 +12,8 @@ const Login = () => {
 
   function loginChec(e) {
     e.preventDefault()
-    // fetch(config.base_URL + '/api/users/login', {
-    fetch('/api/users/login', {
+    fetch(config.base_URL + '/api/users/login', {
+    // fetch('/api/users/login', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json'

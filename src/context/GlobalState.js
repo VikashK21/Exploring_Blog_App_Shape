@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useReducer } from "react";
-// import config from '../config';
+import config from '../config';
 import {
   fetchBlogFailure,
   fetchBlogRequest,
@@ -19,9 +19,9 @@ export function GlobalProvider({ children }) {
   // Actions
   function getBlogs() {
     dispatch(fetchBlogRequest);
-    // axios.get(config.base_URL + '/api/blogs/')
-    axios
-      .get("/api/blogs/")
+    axios.get(config.base_URL + '/api/blogs/')
+    // axios
+    //   .get("/api/blogs/")
       .then(res => {
         const id = res.data.id;
         const blogs = res.data.result.map(ele => {
@@ -42,9 +42,9 @@ export function GlobalProvider({ children }) {
   }
   function Likes_Dislikes(id, reaction) {
     console.log(reaction, "likes_dislikes");
-    // axios.post(config.base_URL + `/api/blogs/likes_dislikes/${id}`, reaction)
-    axios
-      .post(`/api/blogs/likes_dislikes/${id}`, reaction)
+    axios.post(config.base_URL + `/api/blogs/likes_dislikes/${id}`, reaction)
+    // axios
+    //   .post(`/api/blogs/likes_dislikes/${id}`, reaction)
       .then(res => {
         console.log(res.data);
         // const data = res.data
@@ -54,9 +54,9 @@ export function GlobalProvider({ children }) {
       });
   }
   function CreateBlog(data) {
-    // axios.post(config.base_URL + '/api/blogs/post', data, {Headers: {'Authorization': config.token}})
-    axios
-      .post("/api/blogs/post", data)
+    axios.post(config.base_URL + "/api/blogs/post", data)
+    // axios
+    //   .post("/api/blogs/post", data)
       .then(res => {
         // console.log(res.data);
         const data2 = res.data.result;
@@ -68,9 +68,9 @@ export function GlobalProvider({ children }) {
   }
   function EditBlog(id) {}
   function Logout() {
-    // axios.post(config.base_URL + `/api/users/logout`)
-    axios
-      .post(`/api/users/logout`)
+    axios.post(config.base_URL + `/api/users/logout`)
+    // axios
+    //   .post(`/api/users/logout`)
       .then(res => {
         // console.log(res.data);
         const data = res.data.result;
