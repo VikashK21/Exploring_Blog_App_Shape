@@ -1,5 +1,7 @@
 const config = {
-    base_URL: 'https://explore-blog-app.herokuapp.com',
+    base_URL: 'http://localhost:8000',
+    base_URL2: 'https://explore-blog-app.herokuapp.com',
+    token: document.cookie
 
 }
 

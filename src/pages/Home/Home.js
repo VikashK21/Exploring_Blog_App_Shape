@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../../App.css';
 import { useNavigate } from 'react-router-dom';
 import Blogs from './Blogs';
@@ -7,20 +7,25 @@ import { Nav, Button, Container } from 'react-bootstrap';
 
 
 const Home = () => {
-    const { blogs, error, Logout, allBlogs } = useContext(GlobalContext);
+    const { blogs, error, Logout, getBlogs } = useContext(GlobalContext);
     const navigate = useNavigate();
+    const [allblogs, setBlogs] = useState([])
+
     function bringingAll() {
         if (!document.cookie) {
             navigate('/login')
         }
         else {
-            allBlogs()
+            getBlogs()
+            setBlogs(blogs)
         }
     }
-
+    
     useEffect(() => {
+        // allBlogs();
+        console.log('vikash');
         bringingAll()
-    })
+    }, [allblogs, blogs])
 
 
     return (
@@ -36,8 +41,8 @@ const Home = () => {
             </Nav>
             <Container className='App-header' style={{ marginTop: '5vh' }}>
                 {
-                    blogs.length > 0 &&
-                    blogs.map(ele => (<Blogs key={ele.id} blogs={ele} />))
+                    allblogs.length > 0 &&
+                    allblogs.map(ele => (<Blogs key={ele.id} blogs={ele} />))
                 }
             </Container>
         </>

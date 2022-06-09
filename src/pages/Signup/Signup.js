@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../App.css';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import config from '../../config';
+// import config from '../../config';
 
 const Signup = () => {
 
@@ -18,7 +18,8 @@ const Signup = () => {
     }
     delete user.confirm_pass;
     console.log(user, 'users');
-    fetch(config.base_URL + '/api/users/signup', {
+    // fetch(config.base_URL + '/api/users/signup', {
+    fetch('/api/users/signup', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',

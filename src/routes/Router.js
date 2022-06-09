@@ -12,12 +12,12 @@ function Routers() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/verify' element={<Verify />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/change_password' element={<ChangePass />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/profile' element={<CreateBlog />} />
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/verify' element={<Verify />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/change_password' element={<ChangePass />} />
+        <Route exact path='/signup' element={<Signup />} />
+        <Route exact path='/profile' element={<CreateBlog />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </Router>
